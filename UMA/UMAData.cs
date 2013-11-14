@@ -284,7 +284,7 @@ namespace UMA
 			if(_hasUpdatedBefore){
 				cleanTextures();
 				if(!onQuit)cleanMesh(true);
-//				cleanAvatar();
+				cleanAvatar();
 			}
 		}
 		

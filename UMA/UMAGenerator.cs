@@ -7,6 +7,7 @@ using Object = UnityEngine.Object;
 namespace UMA
 {
 	public class UMAGenerator : MonoBehaviour {	
+
 		public bool usePRO;
 		public bool convertRenderTexture;
 		public bool fitAtlas;
@@ -31,19 +32,13 @@ namespace UMA
 		List<Material> combinedMaterialList;
 		
 		public LegacyCombineInstances legacyCombineInstances;
-		
+
+		public float unityVersion;
+
 		void Awake () {
 			
 			legacyCombineInstances = new LegacyCombineInstances();
 			legacyCombineInstances.umaGenerator = this;
-			
-			
-			#if UNITY_EDITOR     
-				if(usePRO && !UnityEditorInternal.InternalEditorUtility.HasPro()){
-					Debug.LogWarning("You might need to disable usePRO option at" + this.name);
-					usePRO = false;
-				}
-			#endif
 			
 			maxMeshUpdates = 1;
 			if( atlasResolution == 0 ) atlasResolution = 256;
@@ -131,36 +126,33 @@ namespace UMA
 	        }
 	    }
 
-	#if !UNITY_4_2
+	
 	    private struct AnimationState
 	    {
 	        public int stateHash;
 	        public float stateTime;
 	    }
-	#endif
-
+	
 	    public virtual void UpdateUMABody (UMAData umaData){
 			if(umaData)
 	        {
-	#if !UNITY_4_2
-	            AnimationState[] snapshot = null;
-	#endif
+				AnimationState[] snapshot = null;
 	            if (umaData.animationController)
 	            {
-	#if !UNITY_4_2
-	                var animator = umaData.GetComponent<Animator>();
-	                if (animator != null)
-	                {
+					if(unityVersion >= 4.3f){
+		                var animator = umaData.GetComponent<Animator>();
+		                if (animator != null)
+		                {
 
-	                    snapshot = new AnimationState[animator.layerCount];
-	                    for (int i = 0; i < animator.layerCount; i++)
-	                    {
-	                        var state = animator.GetCurrentAnimatorStateInfo(i);
-	                        snapshot[i].stateHash = state.nameHash;
-	                        snapshot[i].stateTime = Mathf.Max(0, state.normalizedTime - Time.deltaTime / state.length);
-	                    }
-	                }
-	#endif
+		                    snapshot = new AnimationState[animator.layerCount];
+		                    for (int i = 0; i < animator.layerCount; i++)
+		                    {
+		                        var state = animator.GetCurrentAnimatorStateInfo(i);
+		                        snapshot[i].stateHash = state.nameHash;
+		                        snapshot[i].stateTime = Mathf.Max(0, state.normalizedTime - Time.deltaTime / state.length);
+		                    }
+		                }
+					}
 	                foreach (var entry in umaData.boneList)
 	                {
 	                    entry.Value.boneTransform.localPosition = entry.Value.originalBonePosition;
@@ -183,16 +175,16 @@ namespace UMA
 	                CreateAnimator(umaData.gameObject, umaData.umaRecipe.raceData.TPose, umaData.animationController,applyRootMotion,animatePhysics,cullingMode);
 			        umaData.transform.parent = oldParent;
 	                animator = umaData.GetComponent<Animator>();
-	#if !UNITY_4_2
-	                if (snapshot != null)
-	                {
-	                    for (int i = 0; i < animator.layerCount; i++)
-	                    {
-	                        animator.Play(snapshot[i].stateHash, i, snapshot[i].stateTime);
-	                    }
-	                    animator.Update(0);
-	                }
-	#endif
+					if(unityVersion >= 4.3f){
+		                if (snapshot != null)
+		                {
+		                    for (int i = 0; i < animator.layerCount; i++)
+		                    {
+		                        animator.Play(snapshot[i].stateHash, i, snapshot[i].stateTime);
+		                    }
+		                    animator.Update(0);
+		                }
+					}
 			    }
 			}
 		}
@@ -399,10 +391,6 @@ namespace UMA
 				
 				atlasUVs[i].x = Mathf.Lerp( tempAtlasRect[rectIndex].xMin/atlasResolution, tempAtlasRect[rectIndex].xMax/atlasResolution, originalUVs[i].x );
 	            atlasUVs[i].y = Mathf.Lerp( tempAtlasRect[rectIndex].yMin/atlasResolution, tempAtlasRect[rectIndex].yMax/atlasResolution, originalUVs[i].y );            
-				
-				if(originalUVs[i].x > 1 || originalUVs[i].y > 1){
-					Debug.Log(i);	
-				}
 				
 	            if(i >= (meshVertexAmount[rectIndex] + vertTracker) - 1) {
 					vertTracker = vertTracker + meshVertexAmount[rectIndex];
