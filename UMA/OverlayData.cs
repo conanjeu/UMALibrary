@@ -41,29 +41,6 @@ namespace UMA
 	    }
 
 	    public bool useAdvancedMasks { get { return channelMask != null && channelMask.Length > 0; } }
-	    public OverlayData(OverlayLibrary _overlayLibrary, string elementName)
-	    {
-
-	        OverlayData source;
-	        if (!_overlayLibrary.overlayDictionary.TryGetValue(elementName, out source))
-	        {
-	            Debug.LogError("Unable to find OverlayData " + elementName);
-	            this.overlayName = elementName;
-	            return;
-	        }
-
-	        this.overlayName = source.overlayName;
-	        this.listID = source.listID;
-	        this.color = new Color(source.color.r, source.color.g, source.color.b, color.a);
-	        this.rect = source.rect;
-	        this.textureList = new Texture2D[source.textureList.Length];
-	        for (int i = 0; i < textureList.Length; i++)
-	        {
-	            this.textureList[i] = source.textureList[i];
-	        }
-	    }
-
-
 	    public void SetColor(int overlay, Color32 color)
 	    {
 	        if (useAdvancedMasks)

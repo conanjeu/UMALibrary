@@ -41,23 +41,15 @@
       <HintPath>..\..\..\LitJson.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="UMAGeneratorCoroutine.cs" />
     <Compile Include="UMAGenerator.cs" />
     <Compile Include="TextureProcessPROCoroutine.cs" />
     <Compile Include="TextureProcessIndieCoroutine.cs" />
     <Compile Include="RaceData.cs" />
-    <Compile Include="RaceLibrary.cs" />
-    <Compile Include="OverlayData.cs" />
-    <Compile Include="OverlayLibrary.cs" />
     <Compile Include="LegacyCombineInstances.cs" />
-    <Compile Include="SlotData.cs" />
-    <Compile Include="SlotLibrary.cs" />
     <Compile Include="DnaConverterBehaviour.cs" />
-    <Compile Include="UMAData.cs" />
-    <Compile Include="UMADnaHumanoid_Generated.cs" />
-    <Compile Include="UMADna_Generated.cs" />
     <Compile Include="UMADnaHumanoid.cs" />
     <Compile Include="BlendAdditiveTextureRectCoroutine.cs" />
     <Compile Include="BlendTextureRectCoroutine.cs" />
@@ -72,14 +64,14 @@
     <Compile Include="SkinnedMeshCombiner.cs" />
     <Compile Include="TextureMerge.cs" />
     <Compile Include="UMAProcessBones.cs" />
-    <Compile Include="UMARaces.cs" />
     <Compile Include="UmaTPose.cs" />
     <Compile Include="WorkerCoroutine.cs" />
     <Compile Include="MaxRectsBinPack.cs" />
+    <Compile Include="UMADna_Generated.cs" />
+    <Compile Include="UMADnaHumanoid_Generated.cs" />
     <Compile Include="UMADna.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="UMA.csproj" />
+    <Compile Include="UMAData.cs" />
+    <Compile Include="OverlayData.cs" />
+    <Compile Include="SlotData.cs" />
   </ItemGroup>
 </Project>

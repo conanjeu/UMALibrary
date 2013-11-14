@@ -18,7 +18,7 @@ namespace UMA
 	    public DnaConverterBehaviour slotDNA;
 		public BoneWeight[] boneWeights;
 			
-		public List<OverlayData> overlayList = new List<OverlayData>();
+		private List<OverlayData> overlayList = new List<OverlayData>();
 
 	    public SlotData Duplicate()
 	    {
@@ -45,47 +45,9 @@ namespace UMA
 	    }
 
 
-
 	    public SlotData()
 	    {
 
-	    }
-
-	    public SlotData(SlotLibrary _slotLibrary, string elementName)
-	    {
-	        SlotData source;
-	        if (!_slotLibrary.slotDictionary.TryGetValue(elementName, out source))
-	        {
-	            Debug.LogError("Unable to find SlotData " + elementName);
-	            this.slotName = elementName;
-	            return;
-	        }
-
-	        this.slotName = source.slotName;
-	        this.listID = source.listID;
-
-	        // All this data is passed as reference
-	        this.meshRenderer = source.meshRenderer;
-	        //this.shader = source.shader;
-	        this.materialSample = source.materialSample;
-	        this.overlayScale = source.overlayScale;
-	        this.umaBoneData = source.umaBoneData;
-			this.boneWeights = source.boneWeights;
-	        this.slotDNA = source.slotDNA;
-	        //Overlays are duplicated, to lose reference
-	        for (int i = 0; i < source.OverlayCount; i++)
-	        {
-	            this.AddOverlay(source.overlayList[i].Duplicate());
-	        }
-	    }
-
-	    public SlotData(SlotLibrary _slotLibrary, string elementName, Color color)
-	        : this(_slotLibrary, elementName)
-	    {
-	        var source = _slotLibrary.slotDictionary[elementName];
-
-	        this.overlayList[0] = source.GetOverlay(0).Duplicate();
-	        this.GetOverlay(0).color = color;
 	    }
 
 		public bool RemoveOverlay(params string[] names)
