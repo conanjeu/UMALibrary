@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 namespace UMA
 {
-
 	[System.Serializable]
 	public class OverlayData : ScriptableObject
 	{

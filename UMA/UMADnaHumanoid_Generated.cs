@@ -14,9 +14,9 @@
 //#TEMPLATE Byte_ToDna UmaDnaChild_Byte_ToDna_Fragment.cs.txt
 //#TEMPLATE Byte_FromDna UmaDnaChild_Byte_FromDna_Fragment.cs.txt
 //
-
 namespace UMA
 {
+
 	public partial class UMADnaHumanoid
 	{
 		public override int Count { get { return 46; } }

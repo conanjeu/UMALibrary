@@ -1,9 +1,7 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UMA\UMAGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UMA\UMADnaHumanoid.cs">
     <Files>
-      <File FileName="UMA\UMAGenerator.cs" Line="1" Column="1" />
-      <File FileName="UMA\UMADna_Generated.cs" Line="1" Column="1" />
       <File FileName="UMA\UMADnaHumanoid_Generated.cs" Line="1" Column="1" />
       <File FileName="UMA\UMADnaHumanoid.cs" Line="1" Column="1" />
     </Files>

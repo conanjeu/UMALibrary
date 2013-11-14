@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace UMA
 {
-
 	public class BlendAdditiveTextureRectCoroutine : WorkerCoroutine
 	{
 		
@@ -125,5 +124,4 @@ namespace UMA
 			insertList = null; 
 	    }
 	}
-
 }

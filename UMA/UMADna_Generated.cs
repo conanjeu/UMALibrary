@@ -1,3 +1,4 @@
+
 // UMA Auto genered code, DO NOT MODIFY!!!
 // All changes to this file will be destroyed without warning or confirmation!
 // Use double { to escape a single curly bracket
@@ -10,9 +11,9 @@
 //#TEMPLATE Load UmaDna_Load_Fragment.cs.txt
 //#TEMPLATE Save UmaDna_Save_Fragment.cs.txt
 //
-
 namespace UMA
 {
+	
 	public partial class UMADna
 	{
 		public virtual int Count { get { return 0; } }
@@ -37,16 +38,16 @@ namespace UMA
 		{
 			if( dnaType == typeof(UMADnaHumanoid) )
 				return UMADnaHumanoid.GetNames();
-
+			
 			return new string[0];
 		}
-
+		
 		public static System.Type GetType(System.String className)
 		{
 			if( "UMADnaHumanoid" == className ) return typeof(UMADnaHumanoid);
 			return null;
 		}
-
+		
 		public static System.Type[] GetTypes()
 		{
 			return new System.Type[]
@@ -54,24 +55,24 @@ namespace UMA
 				typeof(UMADnaHumanoid),
 			};
 		}
-
+		
 		public static UMADna LoadInstance(System.Type dnaType, System.String data)
 		{
 			if( dnaType == typeof(UMADnaHumanoid))
 				return UMADnaHumanoid.LoadInstance(data);
-
-
+			
+			
 			return null;
 		}
-
+		
 		public static System.String SaveInstance(UMADna instance)
 		{
 			System.Type dnaType = instance.GetType();
 			if( dnaType == typeof(UMADnaHumanoid))
 				return UMADnaHumanoid.SaveInstance(instance as UMADnaHumanoid);
-
+			
 			return null;
 		}
-
+		
 	}
 }

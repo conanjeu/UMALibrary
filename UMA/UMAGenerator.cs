@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
 
-
 namespace UMA
 {
 	public class UMAGenerator : MonoBehaviour {	

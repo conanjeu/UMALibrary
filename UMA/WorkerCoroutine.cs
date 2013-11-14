@@ -6,6 +6,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 namespace UMA
 {
 	public abstract class WorkerCoroutine
