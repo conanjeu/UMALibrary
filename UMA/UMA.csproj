@@ -76,6 +76,7 @@
     <Compile Include="UmaTPose.cs" />
     <Compile Include="WorkerCoroutine.cs" />
     <Compile Include="MaxRectsBinPack.cs" />
+    <Compile Include="UMADna.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

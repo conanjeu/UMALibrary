@@ -8,11 +8,6 @@ using System.Collections.Generic;
 
 namespace UMA
 {
-	[System.Serializable]
-	public partial class UMADna{
-		
-	}
-
 	public class UMAData : MonoBehaviour {	
 		public SkinnedMeshRenderer myRenderer;
 		
@@ -198,8 +193,8 @@ namespace UMA
 		}
 
 	    public bool dirty = false;
-	    private bool _hasUpdatedBefore = false;
-		private bool onQuit = false;
+		public bool _hasUpdatedBefore = false;
+		public bool onQuit = false;
 	    public event Action<UMAData> OnUpdated;
 	    public void FireUpdatedEvent()
 	    {
@@ -258,7 +253,7 @@ namespace UMA
 		public RuntimeAnimatorController animationController;
 		
 		public Dictionary<string,BoneData> boneList = new Dictionary<string,BoneData>();
-	    private BoneData[] updateBoneList = new BoneData[0];
+		public BoneData[] updateBoneList = new BoneData[0];
 		
 		public BoneData[] tempBoneData; //Only while Dictionary can't be serialized
 		
@@ -344,7 +339,7 @@ namespace UMA
 	        }
 	    }
 
-	    internal void ChangeBoneMoveRelative(string boneName, Vector3 positionToChange)
+		public void ChangeBoneMoveRelative(string boneName, Vector3 positionToChange)
 	    {
 	        BoneData tempBoneData;
 	        if (boneList.TryGetValue(boneName, out tempBoneData))
