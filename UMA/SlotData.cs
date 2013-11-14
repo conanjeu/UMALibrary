@@ -18,7 +18,7 @@ namespace UMA
 	    public DnaConverterBehaviour slotDNA;
 		public BoneWeight[] boneWeights;
 			
-		private List<OverlayData> overlayList = new List<OverlayData>();
+		public List<OverlayData> overlayList = new List<OverlayData>();
 
 	    public SlotData Duplicate()
 	    {
@@ -88,7 +88,7 @@ namespace UMA
 	        this.GetOverlay(0).color = color;
 	    }
 
-	    internal bool RemoveOverlay(params string[] names)
+		public bool RemoveOverlay(params string[] names)
 	    {
 	        bool changed = false;
 	        foreach (var name in names)
@@ -106,7 +106,7 @@ namespace UMA
 	        return changed;
 	    }
 
-	    internal bool SetOverlayColor(Color32 color, params string[] names)
+		public bool SetOverlayColor(Color32 color, params string[] names)
 	    {
 	        bool changed = false;
 	        foreach (var name in names)
@@ -123,7 +123,7 @@ namespace UMA
 	        return changed;
 	    }
 
-	    internal OverlayData GetOverlay(params string[] names)
+		public OverlayData GetOverlay(params string[] names)
 	    {
 	        foreach (var name in names)
 	        {
