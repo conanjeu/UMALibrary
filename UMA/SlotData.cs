@@ -156,7 +156,7 @@ namespace UMA
 	        overlayList.Add(overlayData);
 	    }
 
-	    internal List<OverlayData> GetOverlayList()
+	    public List<OverlayData> GetOverlayList()
 	    {
 	        return overlayList;
 	    }

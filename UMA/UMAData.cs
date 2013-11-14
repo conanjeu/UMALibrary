@@ -134,7 +134,7 @@ namespace UMA
 			protected Dictionary<Type, Action<UMAData>> umaDnaConverter = new Dictionary<Type, Action<UMAData>>();
 			public SlotData[] slotDataList;
 
-	        internal T GetDna<T>()
+			public T GetDna<T>()
 	            where T : UMADna
 	        {
 	            UMADna dna;
@@ -145,13 +145,13 @@ namespace UMA
 	            return null;
 	        }
 
-	        internal void SetRace(RaceData raceData)
+			public void SetRace(RaceData raceData)
 	        {
 	            this.raceData = raceData;
 	            ClearDNAConverters();
 	        }
 
-	        internal void ApplyDNA(UMAData umaData)
+			public void ApplyDNA(UMAData umaData)
 	        {
 	            foreach (var dnaEntry in umaDna)
 	            {            
@@ -167,7 +167,7 @@ namespace UMA
 	            }
 	        }
 
-	        internal void ClearDNAConverters()
+			public void ClearDNAConverters()
 	        {
 	            umaDnaConverter.Clear();
 	            foreach (var converter in raceData.dnaConverterList)
@@ -176,7 +176,7 @@ namespace UMA
 	            }
 	        }
 
-	        internal void AddDNAUpdater(DnaConverterBehaviour dnaConverter)
+			public void AddDNAUpdater(DnaConverterBehaviour dnaConverter)
 	        {
 	            if( dnaConverter == null ) return;
 	            if (!umaDnaConverter.ContainsKey(dnaConverter.DNAType))

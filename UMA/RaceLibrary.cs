@@ -41,7 +41,7 @@ namespace UMA
 	        raceDictionary.Add(race.raceName, race);
 	    }
 
-	    internal RaceData GetRace(string raceName)
+		public RaceData GetRace(string raceName)
 	    {
 	        return raceDictionary[raceName];
 	    }
