@@ -165,12 +165,17 @@ namespace UMA
 			    {
 	                var animator = umaData.GetComponent<Animator>();
 	                
-					bool applyRootMotion = animator.applyRootMotion;
-					bool animatePhysics = animator.animatePhysics;
-					AnimatorCullingMode cullingMode = animator.cullingMode;
-		
-					if (animator) Object.DestroyImmediate(animator);
-			        var oldParent = umaData.transform.parent;
+					bool applyRootMotion = false;
+					bool animatePhysics = false;
+					AnimatorCullingMode cullingMode = AnimatorCullingMode.AlwaysAnimate;
+
+					if(animator){
+						applyRootMotion = animator.applyRootMotion;
+						animatePhysics = animator.animatePhysics;
+						cullingMode = animator.cullingMode;
+						Object.DestroyImmediate(animator);
+					}
+					var oldParent = umaData.transform.parent;
 	                umaData.transform.parent = null;
 	                CreateAnimator(umaData.gameObject, umaData.umaRecipe.raceData.TPose, umaData.animationController,applyRootMotion,animatePhysics,cullingMode);
 			        umaData.transform.parent = oldParent;
